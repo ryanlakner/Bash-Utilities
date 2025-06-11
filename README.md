@@ -1,2 +1,2 @@
 # Bash-Utilities
-Bash utilities
+Collection of bash scripts
