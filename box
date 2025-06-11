@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+title=""
+OPTIND opt
+
+# Parse options: -t "Title"
+while getopts "t:" opt; do
+    case $opt in
+        t) title="$OPTARG" ;;
+        *) ;;
+    esac
+done
+shift $((OPTIND -1))
+
+# Read text, support multi-line
+text="$*"
+IFS=$'\n'
+lines=($text)
+
+# Compute max line length
+max_length=0
+for line in "${lines[@]}"; do
+    (( ${#line} > max_length )) && max_length=${#line}
+done
+
+# Adjust title if provided
+title_text=""
+if [[ -n "$title" ]]; then
+    title_text="─$title"
+fi
+
+# Compute box width
+padding=1
+total_length=$(( max_length + padding * 2 ))
+
+# Top border with optional title
+printf '┌─'
+if [[ -n "$title_text" ]]; then
+    printf '%s' "$title_text"
+    rem=$(( total_length - ${#title_text} - 1 ))
+    printf '─%.0s' $(seq 1 $rem)
+else
+    printf '─%.0s' $(seq 1 $total_length)
+fi
+printf '┐\n'
+
+# Content lines (corrected!)
+for line in "${lines[@]}"; do
+    line_length=${#line}
+    space_after=$(( total_length - line_length - 1))
+    printf '│ '
+    printf "%s" "$line"
+    printf ' %.0s' $(seq 1 $space_after)
+    printf '│\n'
+done
+
+# Bottom border
+printf '└'
+printf '─%.0s' $(seq 1 $total_length)
+printf '┘\n'
+
