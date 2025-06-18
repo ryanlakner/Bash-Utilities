@@ -2,7 +2,8 @@
 
 Collection of bash functions for scripting
 
-Adaptation from [Beddu](https://github.com/mjsarfatti/beddu)
+## Resources
+Adapted some functions from [Beddu](https://github.com/mjsarfatti/beddu)
 
 ## Features
 - Colored text
@@ -11,9 +12,9 @@ Adaptation from [Beddu](https://github.com/mjsarfatti/beddu)
 
 ## Installation
 
-Clone with git
+Download the latest revision
 ```bash
-git clone git@github.com:ryanlakner/Bash-Utilities.git
+curl -O https://raw.githubusercontent.com/ryanlakner/Bash-Utilities/main/utilities
 ```
 
 ## Usage
