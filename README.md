@@ -1,6 +1,8 @@
 # Bash-Utilities
 
-Collection of bash scripts
+Collection of bash functions for scripting
+
+Adaptation from [Beddu](https://github.com/mjsarfatti/beddu)
 
 ## Features
 - Colored text
