@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
+
 # Bash Script Utilities (or functions)
 # Author: Ryan Lakner
-# Created: 06-10-2025
 
-
+# Colors
 BLACK="\033[30m"
 RED="\033[31m"
 GREEN="\033[32m"
@@ -20,7 +20,7 @@ info() {
 }
 
 upclear() {
-    printf "\033[A" && printf "\r" && printf "\033[2K"
+    printf "\033[A\r\033[2K"
 }
 
 title() {
