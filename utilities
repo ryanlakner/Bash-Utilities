@@ -4,19 +4,19 @@
 # Created: 06-10-2025
 
 
-black="\033[30m"
-red="\033[31m"
-green="\033[32m"
-yellow="\033[33m"
-blue="\033[34m"
-purple="\033[35m"
-cyan="\033[36m"
-white="\033[37m"
-grey="\033[90m"
+BLACK="\033[30m"
+RED="\033[31m"
+GREEN="\033[32m"
+YELLOW="\033[33m"
+BLUE="\033[34m"
+PURPLE="\033[35m"
+CYAN="\033[36m"
+WHITE="\033[37m"
+GREY="\033[90m"
 
 info() {
     local text="$1"
-    printf "$blue❯ $white$text"
+    printf "$BLUE❯ $WHITE$text"
 }
 
 upclear() {
@@ -25,14 +25,14 @@ upclear() {
 
 title() {
     clear
-    echo -e "$purple"
+    echo -e "$PURPLE"
     echo '    ____  ___________    _____       ______                         '
     echo '   / __ \/ ____/ ___/   / ___/____  / __/ /__      ______ _________ '
     echo '  / /_/ / /    \__ \    \__ \/ __ \/ /_/ __/ | /| / / __ `/ ___/ _ \'
     echo ' / ____/ /___ ___/ /   ___/ / /_/ / __/ /_ | |/ |/ / /_/ / /  /  __/'
     echo '/_/    \____//____/   /____/\____/_/  \__/ |__/|__/\__,_/_/   \___/ ©'
     echo ''
-    echo -e "$white"
+    echo -e "$WHITE"
     printf "\t\t\tScript: $(basename $0)\n"
     echo ''
 }
@@ -40,23 +40,23 @@ title() {
 seek() {
     local variable=$1
     local prompt="$2"
-    printf "$blue❯ $white$prompt: "
+    printf "$BLUE❯ $WHITE$prompt: "
     read -p "" $variable
 }
 
 confirm() {
     while true; do
-        printf "${blue}? ${white}Continue [Y/N]:\n"
-        printf "${blue}❯ ${white}"
+        printf "${BLUE}? ${WHITE}Continue [Y/N]:\n"
+        printf "${BLUE}❯ ${WHITE}"
         read choice
         case "$choice" in
             [Yy] | [Yy][Ee][Ss] )
                 upclear
-                printf "${blue}❯ ${green}yes${white}\n"
+                printf "${BLUE}❯ ${GREEN}yes${WHITE}\n"
                 return 0 ;;
             [Nn] | [Nn][Oo] )
                 upclear
-                printf "${blue}❯ ${red}no${white}\n"
+                printf "${BLUE}❯ ${RED}no${WHITE}\n"
                 return 1 ;;
             * )
                 fail "Invalid"
@@ -66,15 +66,15 @@ confirm() {
 }
 
 warn() {
-    printf "$yellow! ${@} !$white\n"
+    printf "$YELLOW! ${@} !$WHITE\n"
 }
 
 success() {
-    printf "$green✓ $white${@}\n"
+    printf "$GREEN✓ $WHITE${@}\n"
 }
 
 fail() {
-    printf "$red✗ $white${@}\n"
+    printf "$RED✗ $WHITE${@}\n"
 }
 
 spinner() {
@@ -94,7 +94,7 @@ spinner() {
 }
 
 line() {
-    echo -e "${purple}─────────────────────────────────────────────────────────────────${white}"
+    echo -e "${PURPLE}─────────────────────────────────────────────────────────────────${WHITE}"
 }
 
 box() {
@@ -138,7 +138,8 @@ box() {
         local rem=$(( total_length - ${#title_text} - 1 ))
         printf '─%.0s' $(seq 1 $rem)
     else
-        printf '─%.0s' $(seq 1 $total_length)
+        local rem=$(( total_length - 1 ))
+        printf '─%.0s' $(seq 1 $rem)
     fi
     printf '┐\n'
     
