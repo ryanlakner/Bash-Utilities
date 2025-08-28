@@ -4,7 +4,7 @@ Collection of bash functions for scripting
 
 ## Resources
 Adapted some functions from [Beddu](https://github.com/mjsarfatti/beddu)
-
+Progress bar was from [Dave Eddy] (https://github.com/bahamas10)
 ## Features
 - Colored text
 - Warning, success, failure text
